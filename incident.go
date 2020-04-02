@@ -1,14 +1,48 @@
 package statuspage
 
 type Incident struct {
-	Name         *string  `json:"name"`
-	GroupID      *string  `json:"group_id"`
-	UpdateStatus *string  `json:"update_status"`
-	Title        *string  `json:"suffix"`
-	Body         *string  `json:"y_axis_min"`
-	ComponentIDs []string `json:"component_ids"`
-	ShouldTweet  *bool    `json:"should_tweet"`
+	Name                 *string  `json:"name"`
+	Status               *string  `json:"status"`
+	Body                 *string  `json:"y_axis_min"`
+	ComponentIDs         []string `json:"component_ids"`
+	DeliverNotifications *bool    `json:"deliver_notifications"`
 }
+
+/*
+Full request contract for an incident, from https://developer.statuspage.io/#operation/postPagesPageIdIncidents
+{
+  "incident": {
+    "name": "string",
+    "status": "postmortem",
+    "impact_override": "maintenance",
+    "scheduled_for": "2020-04-02T21:41:26Z",
+    "scheduled_until": "2020-04-02T21:41:26Z",
+    "scheduled_remind_prior": true,
+    "scheduled_auto_in_progress": true,
+    "scheduled_auto_completed": true,
+    "metadata": {},
+    "deliver_notifications": true,
+    "auto_transition_deliver_notifications_at_end": true,
+    "auto_transition_deliver_notifications_at_start": true,
+    "auto_transition_to_maintenance_state": true,
+    "auto_transition_to_operational_state": true,
+    "auto_tweet_at_beginning": true,
+    "auto_tweet_on_completion": true,
+    "auto_tweet_on_creation": true,
+    "auto_tweet_one_hour_before": true,
+    "backfill_date": "string",
+    "backfilled": true,
+    "body": "string",
+    "components": {
+      "component_id": "operational"
+    },
+    "component_ids": [
+      "wmvkjlvhw3cf"
+    ],
+    "scheduled_auto_transition": true
+  }
+}
+*/
 
 type IncidentFull struct {
 	Incident
