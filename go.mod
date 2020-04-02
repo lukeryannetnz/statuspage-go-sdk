@@ -1,3 +1,3 @@
-module github.com/yannh/statuspage-go-sdk
+module github.com/lukeryannetnz/statuspage-go-sdk
 
 go 1.13
